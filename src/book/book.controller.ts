@@ -8,22 +8,20 @@ import {
   Param,
 } from "@nestjs/common";
 import { BookService } from "./book.service";
-import { Book } from "./data/book.dto";
+import type { Book } from "./data/book.dto";
 
 @Controller("book")
 export class BookController {
   constructor(private bookService: BookService) {}
 
   @Get("/findAll")
-  getAllBooks() {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
-    return this.bookService.findAllBooks();
+  getAllBooks(): Book[] {
+    return this.bookService.findAllBooksService();
   }
 
   @Put("/update")
-  updateBook(@Body() book: Book): Book[] {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
-    return this.bookService.findAllBooks();
+  updateBook(@Body() book: Book): string {
+    return this.bookService.updateBookService(book);
   }
 
   @Delete("/delete/:id")
