@@ -3,6 +3,9 @@ import { Book } from "./data/book.dto";
 
 @Injectable()
 export class BookService {
+  findAllBooks(): Book[] {
+      throw new Error("Method not implemented.");
+  }
   public books: Book[] = [];
 
   addBookService(book: Book): string {
